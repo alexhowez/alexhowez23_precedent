@@ -6,23 +6,24 @@ import WebVitals from "@/components/home/web-vitals";
 import ComponentGrid from "@/components/home/component-grid";
 import Image from "next/image";
 import { nFormatter } from "@/lib/utils";
+import Link from "next/link";
 
 export default async function Home() {
-  const { stargazers_count: stars } = await fetch(
-    "https://api.github.com/repos/steven-tey/precedent",
-    {
-      ...(process.env.GITHUB_OAUTH_TOKEN && {
-        headers: {
-          Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      }),
-      // data will revalidate every 24 hours
-      next: { revalidate: 86400 },
-    },
-  )
-    .then((res) => res.json())
-    .catch((e) => console.log(e));
+  // const { stargazers_count: stars } = await fetch(
+  //   "https://api.github.com/repos/steven-tey/precedent",
+  //   {
+  //     ...(process.env.GITHUB_OAUTH_TOKEN && {
+  //       headers: {
+  //         Authorization: `Bearer ${process.env.GITHUB_OAUTH_TOKEN}`,
+  //         "Content-Type": "application/json",
+  //       },
+  //     }),
+  //     // data will revalidate every 24 hours
+  //     next: { revalidate: 86400 },
+  //   },
+  // )
+  //   .then((res) => res.json())
+  //   .catch((e) => console.log(e));
 
   return (
     <>
@@ -38,6 +39,7 @@ export default async function Home() {
             Introducing Precedent
           </p>
         </a>
+        <Link href="c2">TO C2 </Link>
         <h1
           className="animate-fade-up bg-gradient-to-br from-black to-stone-500 bg-clip-text text-center font-display text-4xl font-bold tracking-[-0.02em] text-transparent opacity-0 drop-shadow-sm md:text-7xl md:leading-[5rem]"
           style={{ animationDelay: "0.15s", animationFillMode: "forwards" }}
@@ -88,7 +90,8 @@ export default async function Home() {
             <Github />
             <p>
               <span className="hidden sm:inline-block">Star on</span> GitHub{" "}
-              <span className="font-semibold">{nFormatter(stars)}</span>
+              <span className="font-semibold">{nFormatter(11)}</span>
+              {/* <span className="font-semibold">{nFormatter(stars)}</span> */}
             </p>
           </a>
         </div>
