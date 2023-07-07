@@ -1,8 +1,8 @@
 "use client";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function Header() {
-  const { scrollYProgress } = useViewportScroll();
+  const { scrollYProgress } = useScroll();
   const headerY = useTransform(
     scrollYProgress,
     [0, 0.2, 0.3],
@@ -12,7 +12,7 @@ function Header() {
   return (
     <motion.header
       style={{
-        position: "fixed",
+        // position: "fixed",
         top: 0,
         left: 0,
         right: 0,
@@ -30,6 +30,15 @@ function Header() {
         <a href="/">Link2</a>
         <a href="/">Link3</a>
       </nav>
+      <motion.h1
+        initial={{ x: -150, opacity: 0.4 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ delay: 0.5 }}
+        className=""
+        layoutId=""
+      >
+        asfasiofjas
+      </motion.h1>
     </motion.header>
   );
 }

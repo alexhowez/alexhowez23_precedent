@@ -1,0 +1,20 @@
+.header_a_1 {
+  background: conic-gradient(from 45deg, #4E31FF, #FF0D81);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header_a_2 {
+  background: conic-gradient(#FF3162, #FF12AF);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header_a_3 {
+  background: conic-gradient(#FF228C, #00FFF0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
