@@ -46,7 +46,7 @@ export default function ContactMeSection() {
           <div className="px-4 py-4 grid grid-cols-1 md:grid-cols-2 gap-1 place-items-center">
             <LeftSide />
             <div className="" >
-              jhifhd
+              CALENDLY
             </div>
             {/* <RightSide /> */}
           </div>
