@@ -1,9 +1,10 @@
 "use client";
-   import { Suspense } from 'react';
+import { Suspense } from 'react';
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-// import { FolderTree, Folder } from 'lucide-react';
+
+import HeaderLoading from "./Header2Loading";
 
 type LinkType = {
   text: string;
@@ -17,6 +18,14 @@ const links: LinkType[] = [
   { text: "ContactMe", href: "#contactme", animDelay: 0.5, class: " text-transparent bg-clip-text bg-gradient-to-r from-[#FF3162] to-[#FF12AF]" },
   { text: "AboutMe", href: "#aboutme", animDelay: 1, class: " text-transparent bg-clip-text bg-gradient-to-r from-[#FF228C] to-[#00FFF0]" },
 ];
+
+export default function Component() {
+  return (
+    <Suspense fallback={<HeaderLoading />}>
+      <Header />
+    </Suspense>
+  )
+}
 
 function Header() {
   return (
@@ -78,5 +87,3 @@ const Logo = () => (
     </motion.div>
   </Link>
 );
-
-export default Header;
