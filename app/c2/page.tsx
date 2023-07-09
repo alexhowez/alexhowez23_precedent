@@ -1,21 +1,16 @@
-// import Comp from "@/components/layout/Header";
-// import Comp2 from "@/components/layout/Header2";
 "use client";
 import { Suspense } from 'react';
-import Header from "@/components/layout/Header2";
-import HeaderLoading from "@/components/layout/Header2Loading";
-import Hero from "@/components/home/hero/Hero";
+// import Header from "@/components/layout/Header2";
+// import Hero from "@/components/home/hero/Hero";
+// import ContactMe from "@/components/home/contactme/ContactMe";
+import Comp from "@/components/home/contactme/ContactMe";
+// import Comp2 from "@/components/layout/Header2";
 
-export default async function ComponentTestPage() {
+export default async function ComponentTestPage2() {
   return (
     <body>
-      {/* <div className="h-10 w-full bg-green-200 pt-24">SEPARATOR</div> */}
-      <Suspense fallback={<HeaderLoading />}>
-         <Header />
-       </Suspense>
-      <Hero />
+      <Comp />
       {/* <Comp2 /> */}
-      {/* <Comp /> */}
     </body>
   );
 }

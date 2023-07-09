@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <div className="mx-auto max-w-6xl h-[28rem] w-full relative -z-10 overflow-clip">
+    <div className="mx-auto max-w-6xl h-[28rem] w-full relative -z-10 overflow-clip" id="hero">
       <Image
         src="/hero_bg2.jpg"
         alt="Hero background"
