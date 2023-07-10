@@ -1,23 +1,24 @@
 "use client";
 import { useState, useEffect } from 'react'
-import { cx } from "classix";
-import { motion, AnimatePresence } from 'framer-motion'
-import { FaTwitter, FaDiscord, FaLinkedinIn, FaGithub } from 'react-icons/fa';
-import { BsArrowRightCircleFill } from 'react-icons/bs';
+// import { motion, AnimatePresence } from 'framer-motion'
 
-import Image from 'next/image';
-import Link from 'next/link';
-
-import Card from './Card'
-import styles from './Projects.module.css'
 import type { CardType } from './Card'
 import type { Tab } from './Filters'
+import Card from './Card'
 
 
 const cards: CardType[] = [
   { name: "Openly", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
   { name: "Openly2", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
   { name: "Openly3", href: "/", project_url: "https://github.com/Openly", tech: ["Svelte"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
+  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
   { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"] },
 ]
 
@@ -30,18 +31,14 @@ export default function Component({ platform, tech }: { platform: Tab, tech: Tab
   }, [])
 
   return (
-    <div className="w-full bg-zinc-00">
-      <div className="flex flex-wrap overflow-hidden">
-        <AnimatePresence>
-          {/* <div className="grid grid-cols-5 overflow-hidden"> */}
-          {
-            cards.map((card, i) => <Card key={card.name} selected={selected} setSelected={setSelected} card={card} />)
-          }
-          {/* <Card name="Openly" href="/" project_url="https://github.com/Openly" />
-        <div className="w-16 h-[400px] bg-green-400" />
-        <div className="w-16 h-[400px] bg-green-800" />
-        <div className="w-16 h-[400px] bg-green-400" /> */}
-        </AnimatePresence>
+    <div className="md:col-span-7 w-full">
+      {/* <div className="grid grid-cols-5 overflow-hidden"> */}
+      <div className="p-5 flex flex-wrap overflow-hidden bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg">
+        {/* <AnimatePresence> */}
+        {
+          cards.map((card, i) => <Card key={card.name} selected={selected} setSelected={setSelected} card={card} />)
+        }
+        {/* </AnimatePresence> */}
       </div>
     </div>
   );

@@ -1,15 +1,11 @@
 "use client";
-import { useState } from 'react'
+// import { useState } from 'react'
 import { cx } from "classix";
 import { motion, AnimatePresence } from 'framer-motion'
-import { FaTwitter, FaDiscord, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
 import Image from 'next/image';
 import Link from 'next/link';
-
-// import Modal from './SocialsModal'
-import styles from './Projects.module.css'
 
 export type CardType = {
   href: string;
@@ -52,7 +48,7 @@ export default function CardComponent({ selected, setSelected, card }: ExtendedC
       // animate="visible"
       // style={selected === card ? { flex: "1 1 0%" } : { flex: "" }}
       // transition={{ duration: 0.2 }}
-      className={cx("h-[400px] w-16 rounded-2xl group relative overflow-hidde cursor-pointer "
+      className={cx("h-[400px] w-16 rounded-2xl group relative overflow-hidde cursor-pointer lg:w-24 overflow-hidden"
       , selected === card ? "flex-1" : ""
       )}>
       <div className="relative h-[400px] w-full">
