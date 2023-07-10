@@ -1,22 +1,20 @@
 "use client";
-   import { Suspense } from 'react';
+import { Suspense } from 'react';
 import Image from "next/image";
 import { motion } from "framer-motion";
 // import styles from './Hero.module.css'
 
+import ProjectsContainer from './ProjectsContainer'
+import Card from './Card'
+import Filters from './Filters'
+
 export default function Section() {
   return (
-    <div className="mx-auto max-w-6xl h-[28rem] w-full relative -z-10 overflow-clip" id="hero">
-      <Image
-        src="/hero_bg2.jpg"
-        alt="Hero background"
-        // fill
-        height={560}
-        width={1800}
-        className="h-[28rem] w-[1440px] object-cover -z-20 absolute overflow-clip"
-      />
-      <FloatingSquares />
-    </div>
+    // <div className="mx-auto max-w-6xl h-[28rem] w-full relative -z-10 overflow-clip" id="hero">
+
+      <Card />
+      // <Filters />
+    // </div>
   );
 }
 
