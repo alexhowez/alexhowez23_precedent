@@ -1,6 +1,7 @@
 "use client";
 import { useState } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import { cx } from "classix";
+import { motion, AnimatePresence } from 'framer-motion'
 import { FaTwitter, FaDiscord, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
@@ -10,29 +11,64 @@ import Link from 'next/link';
 // import Modal from './SocialsModal'
 import styles from './Projects.module.css'
 
-
-export default function Component() {
-  const [modalOpened, setModalOpened] = useState(false)
-
-  return (
-    <div className="h-[400px] w-full bg-zinc-200">
-      <div className="flex overflow-hidden">
-        <Card name="Openly" href="/" project_url="https://github.com/Openly" />
-        <div className="w-16 h-[400px] bg-green-400" />
-        <div className="w-16 h-[400px] bg-green-800" />
-        <div className="w-16 h-[400px] bg-green-400" />
-      </div>
-    </div>
-  );
-}
-
-type InfoProps = {
+export type CardType = {
   href: string;
   name: string;
   project_url: string;
+  tech: string[]
 };
 
-const CardInfo = ({ href, name, project_url }: InfoProps) => {
+// const variants = {
+//   visible: {
+//     opacity: 1,
+//     className: "flex-1",
+//     transition: {
+//       duration: 0.5,
+//     },
+//   },
+//   hidden: {
+//     opacity: 0.5,
+//     className: "",
+//     transition: {
+//       duration: 0.5,
+//     },
+//   },
+// };
+
+// type ExtendedCard = Card & { setSelected: () => void };
+type ExtendedCard = {
+  selected: CardType
+  setSelected: (card: CardType) => void
+  card: CardType
+};
+
+export default function CardComponent({ selected, setSelected, card }: ExtendedCard) {
+  return (
+    <motion.div
+      layout
+      onClick={() => setSelected(card)}
+      // variants={variants}
+      // initial="hidden"
+      // animate="visible"
+      // style={selected === card ? { flex: "1 1 0%" } : { flex: "" }}
+      // transition={{ duration: 0.2 }}
+      className={cx("h-[400px] w-16 rounded-2xl group relative overflow-hidde cursor-pointer "
+      , selected === card ? "flex-1" : ""
+      )}>
+      <div className="relative h-[400px] w-full">
+        <Image
+          src="/hero_bg2.jpg"
+          alt="Hero background"
+          fill
+          className="object-cover group-hover:scale-110 duration-300 "
+        />
+      </div>
+      {selected === card ? <CardInfo {...card} /> : null}
+    </motion.div>
+  )
+};
+
+const CardInfo = ({ href, name, project_url }: CardType) => {
   return (
     <div className="p-5 w-full absolute bottom-0 flex justify-between items-end">
       <Link href={href} className="px-4 py-2 rounded-xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
@@ -46,17 +82,3 @@ const CardInfo = ({ href, name, project_url }: InfoProps) => {
     </div>
   );
 };
-
-const Card = (cardInfo: InfoProps) => (
-  <article className="h-[400px] rounded-2xl relative overflow-clip flex-1 hover:scale-105 duration-300">
-    <div className="relative h-[400px] w-full">
-      <Image
-        src="/hero_bg2.jpg"
-        alt="Hero background"
-        fill
-        className="object-cover"
-      />
-    </div>
-    <CardInfo {...cardInfo} />
-  </article>
-);

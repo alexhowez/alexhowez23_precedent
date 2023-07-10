@@ -11,7 +11,10 @@ import Link from 'next/link';
 // import Modal from './SocialsModal'
 import styles from './Filters.module.css'
 
-type Tab = { label: string }
+// export type Platform = "All" | "Web" | "Mobile"
+// export type Tech = "ReactJS" | "NodeJS" | "Svelte"
+export type Tab = { label: string }
+
 const tabs: Tab[] = [{ label: "Web" }, { label: "Mobile/Gaming" }];
 
 const techs: Tab[] = [
@@ -28,18 +31,20 @@ const selectedStyle = "bg-rose-300"
 const liButton = "w-20 h-20 rounded-md relative flex justify-center items-center text-black ml-10 cursor-pointer flex-shrink-0"
 const underlineStyle = "nset-x-0 absolute bottom-[1px] left-0 right-0 h-[2px] rounded-lg bg-yellow-400"
 
-export default function Component() {
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
-  const [selectedTech, setSelectedTech] = useState(techs[0])
+interface Props {
+  platforms: Tab[];
+  techs: Tab[];
+  setPlatform: React.Dispatch<React.SetStateAction<Tab>>;
+  setTech: React.Dispatch<React.SetStateAction<Tab>>;
+  platform: Tab
+  tech: Tab
+}
 
-  useEffect(() => {
-    setSelectedTab(tabs[0])
-  }, [])
-
+export default function Component({platforms, techs, setPlatform, setTech, platform, tech }: Props) {
   return (
     <article className="py-10 w-full bg-zinc-00 opacity-400 backdrop-blur-lg rounded-lg">
-      <UpperTabs tabs={tabs} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-      <LowerTabs tabs={techs} selectedTab={selectedTech} setSelectedTab={setSelectedTech} />
+      <UpperTabs tabs={platforms} selectedTab={platform} setSelectedTab={setPlatform} />
+      <LowerTabs tabs={techs} selectedTab={tech} setSelectedTab={setTech} />
       <div className="flex rounded-lg bg-zinc-800">
         <div className="w-16 h-[40px] bg-green-400" />
         <div className="w-16 h-[40px] bg-green-800" />
