@@ -1,15 +1,7 @@
 "use client";
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { cx } from "classix";
-import { motion, AnimatePresence } from "framer-motion";
-import { FaTwitter, FaDiscord, FaLinkedinIn, FaGithub } from 'react-icons/fa';
-import { BsArrowRightCircleFill } from 'react-icons/bs';
-
-import Image from 'next/image';
-import Link from 'next/link';
-
-// import Modal from './SocialsModal'
-import styles from './Filters.module.css'
+import { motion } from "framer-motion";
 
 // export type Platform = "All" | "Web" | "Mobile"
 // export type Tech = "ReactJS" | "NodeJS" | "Svelte"
@@ -44,7 +36,7 @@ export default function Component({ platforms, techs, setPlatform, setTech, plat
 }
 
 const UpperTabs = ({ tabs, selectedTab, setSelectedTab }: { tabs: Tab[], selectedTab: Tab, setSelectedTab: (tab: Tab) => void }) => (
-  <ul className="p-2 flex justify-center space-x-5 bg-black rounded-lg backdrop-blur-lg text-lg">
+  <ul className="p-2 flex flex-col lg:flex-row justify-center lg:space-x-2 bg-black rounded-lg backdrop-blur-lg text-lg">
     {tabs.map((item: Tab) => (
       <li
         key={item.label}

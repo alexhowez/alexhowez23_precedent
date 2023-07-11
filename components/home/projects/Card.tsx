@@ -1,7 +1,7 @@
 "use client";
 // import { useState } from 'react'
 import { cx } from "classix";
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
 import Image from 'next/image';
@@ -12,6 +12,7 @@ export type CardType = {
   name: string;
   project_url: string;
   tech: string[]
+  platform: string[]
 };
 
 // const variants = {
@@ -48,8 +49,8 @@ export default function CardComponent({ selected, setSelected, card }: ExtendedC
       // animate="visible"
       // style={selected === card ? { flex: "1 1 0%" } : { flex: "" }}
       // transition={{ duration: 0.2 }}
-      className={cx("h-[400px] w-16 rounded-2xl group relative overflow-hidde cursor-pointer lg:w-24 overflow-hidden"
-      , selected === card ? "flex-1" : ""
+      className={cx("h-[200px] md:h-[400px] ounded-2xl group relative overflow-hidde cursor-pointer overflow-hidden col-span-6"
+        , selected === card ? "md:col-span-6" : "md:col-span-3"
       )}>
       <div className="relative h-[400px] w-full">
         <Image
@@ -59,21 +60,24 @@ export default function CardComponent({ selected, setSelected, card }: ExtendedC
           className="object-cover group-hover:scale-110 duration-300 "
         />
       </div>
-      {selected === card ? <CardInfo {...card} /> : null}
+      {/* <div className={"hidden md:block "}> */}
+        <CardInfo {...card} />
+        {/* {selected === card ? <CardInfo {...card} /> : null} */}
+      {/* </div> */}
     </motion.div>
   )
 };
 
 const CardInfo = ({ href, name, project_url }: CardType) => {
   return (
-    <div className="p-5 w-full absolute bottom-0 flex justify-between items-end">
-      <Link href={href} className="px-4 py-2 rounded-xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
+    <div className="p-2 md:p-5 h-full w-full absolute bottom-0 md:bottom-0 flex flex-col md:flex-row justify-between md:justify-between items-between md:items-end">
+      <Link href={href} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
         <BsArrowRightCircleFill size={25} className="" />
         <p className='text-sm'>See Project</p>
       </Link>
       <div className="text-right">
-        <p className='text-4xl text-white font-bold'>{name}</p>
-        <p className='text-sm text-red-700 font-semibold'>{project_url}</p>
+        <p className='text-lg md:text-4xl text-white font-bold'>{name}</p>
+        <p className='text-xs md:text-sm text-red-700 font-semibold'>{project_url}</p>
       </div>
     </div>
   );
