@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 // import styles from './Hero.module.css'
 
-export default function Hero() {
+export default function Section() {
   return (
     <div className="mx-auto max-w-6xl h-[28rem] w-full relative -z-10 overflow-clip" id="hero">
       <Image

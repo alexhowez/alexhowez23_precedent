@@ -32,6 +32,9 @@ dependencies:
   '@vercel/og':
     specifier: ^0.0.26
     version: 0.0.26
+  classix:
+    specifier: ^2.1.33
+    version: 2.1.33
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -1324,6 +1327,10 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
+
+  /classix@2.1.33:
+    resolution: {integrity: sha512-AiR6VoOprdFFf/Ae5SabKVIhMUfLEpIIRUgYAyhIye8b4DH4nX6zeGJMcWckGS44ecOHtcReCiyKraVvAglMnw==}
+    dev: false
 
   /classnames@2.3.2:
     resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}

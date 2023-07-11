@@ -1,13 +1,13 @@
 "use client";
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
-import { FaTwitter, FaDiscord } from 'react-icons/fa';
+import { FaTwitter, FaDiscord, FaLinkedinIn, FaGithub } from 'react-icons/fa';
 import { MdMail } from 'react-icons/md';
 
 import Modal from './SocialsModal'
 
 export default function Socials() {
-  const [modalOpened, setModalOpened] = useState(true)
+  const [modalOpened, setModalOpened] = useState(false)
 
   return (
     <div className="p-4 bg-red-500 rounded-md space-y-2">
@@ -16,6 +16,8 @@ export default function Socials() {
         <IconComponent Icon={FaTwitter} setModalOpened={setModalOpened} modalOpened={modalOpened} />
         <IconComponent Icon={FaDiscord} setModalOpened={setModalOpened} modalOpened={modalOpened} />
         <IconComponent Icon={MdMail} setModalOpened={setModalOpened} modalOpened={modalOpened} />
+        {/* <IconComponent Icon={FaLinkedinIn} setModalOpened={setModalOpened} modalOpened={modalOpened} /> */}
+        {/* <IconComponent Icon={FaGithub} setModalOpened={setModalOpened} modalOpened={modalOpened} /> */}
       </div>
       <AnimatePresence>
         {modalOpened ? (
@@ -29,6 +31,6 @@ export default function Socials() {
 const IconComponent = ({ Icon, setModalOpened, modalOpened }: { Icon: any, setModalOpened: (boolean: boolean) => void, modalOpened: boolean }) => (
   <div onClick={() => setModalOpened(!modalOpened)}>
     {/* <motion.div onClick={() => setModalOpened(true)}> */}
-    <Icon size={60} className={`hover:text-[#270208] hover:scale-110 duration-300`} />
+    <Icon size={50} className={`hover:text-[#270208] hover:scale-110 duration-300`} />
   </div>
 );
