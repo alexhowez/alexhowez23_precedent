@@ -27,7 +27,7 @@ export default function Section() {
   const [tech, setTech] = useState(techs[0]);
 
   return (
-    <section className="bg-white  w-full py-5" id="projects">
+    <section className="bg-white w-full py-4 my-4 border-y-2 border-red-500" id="projects">
       <Title />
       <div className="p-6 mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-10 gap-y-2 md:gap-x-3 md:gap-y-0">
         <Filters platforms={platforms} techs={techs} setPlatform={setPlatform} setTech={setTech} platform={platform} tech={tech} />

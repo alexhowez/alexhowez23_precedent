@@ -37,9 +37,10 @@ type ExtendedCard = {
   selected: CardType
   setSelected: (card: CardType) => void
   card: CardType
+  openModal: (card: CardType) => void
 };
 
-export default function CardComponent({ selected, setSelected, card }: ExtendedCard) {
+export default function CardComponent({ selected, setSelected, card, openModal }: ExtendedCard) {
   return (
     <motion.div
       layout
@@ -55,26 +56,30 @@ export default function CardComponent({ selected, setSelected, card }: ExtendedC
       <div className="relative h-[400px] w-full">
         <Image
           src="/hero_bg2.jpg"
-          alt="Hero background"
+          alt="Project Cover"
           fill
           className="object-cover group-hover:scale-110 duration-300 "
         />
       </div>
+      {selected === card ? <CardInfo {...card} openModal={openModal} /> : null}
       {/* <div className={"hidden md:block "}> */}
-        <CardInfo {...card} />
-        {/* {selected === card ? <CardInfo {...card} /> : null} */}
+      {/* <CardInfo {...card} /> */}
       {/* </div> */}
     </motion.div>
   )
 };
 
-const CardInfo = ({ href, name, project_url }: CardType) => {
+const CardInfo = ({ href, name, project_url, openModal }: CardType & { openModal: any }) => {
   return (
-    <div className="p-2 md:p-5 h-full w-full absolute bottom-0 md:bottom-0 flex flex-col md:flex-row justify-between md:justify-between items-between md:items-end">
-      <Link href={href} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
+    <div className="p-2 md:p-5 h-full w-full absolute bottom-0 md:bottom-0 flex flex-col  justify-between  items-between lg:flex-row lg:justify-between lg:items-end">
+      {/* <Link href={href} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
         <BsArrowRightCircleFill size={25} className="" />
-        <p className='text-sm'>See Project</p>
-      </Link>
+        <p className='text-sm'>Open Popup</p>
+      </Link> */}
+      <div onClick={openModal} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
+        <BsArrowRightCircleFill size={25} className="" />
+        <p className='text-sm'>Open Popup</p>
+      </div>
       <div className="text-right">
         <p className='text-lg md:text-4xl text-white font-bold'>{name}</p>
         <p className='text-xs md:text-sm text-red-700 font-semibold'>{project_url}</p>

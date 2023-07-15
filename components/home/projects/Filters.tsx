@@ -21,10 +21,11 @@ interface Props {
 }
 
 export default function Component({ platforms, techs, setPlatform, setTech, platform, tech }: Props) {
-    
+
   useEffect(() => {
     setPlatform(platforms[0])
     setTech(techs[0])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
