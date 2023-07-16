@@ -5,15 +5,9 @@ import { motion } from 'framer-motion'
 import { BsArrowRightCircleFill } from 'react-icons/bs';
 
 import Image from 'next/image';
-import Link from 'next/link';
+// import Link from 'next/link';
 
-export type CardType = {
-  href: string;
-  name: string;
-  project_url: string;
-  tech: string[]
-  platform: string[]
-};
+import type {CardType} from './projects_data'
 
 // const variants = {
 //   visible: {
@@ -37,7 +31,7 @@ type ExtendedCard = {
   selected: CardType
   setSelected: (card: CardType) => void
   card: CardType
-  openModal: (card: CardType) => void
+  openModal: (id: number) => void
 };
 
 export default function CardComponent({ selected, setSelected, card, openModal }: ExtendedCard) {
@@ -61,7 +55,7 @@ export default function CardComponent({ selected, setSelected, card, openModal }
           className="object-cover group-hover:scale-110 duration-300 "
         />
       </div>
-      {selected === card ? <CardInfo {...card} openModal={openModal} /> : null}
+      {selected === card ? <CardInfo {...card} openModal={openModal} id={card.id} /> : null}
       {/* <div className={"hidden md:block "}> */}
       {/* <CardInfo {...card} /> */}
       {/* </div> */}
@@ -69,14 +63,14 @@ export default function CardComponent({ selected, setSelected, card, openModal }
   )
 };
 
-const CardInfo = ({ href, name, project_url, openModal }: CardType & { openModal: any }) => {
+const CardInfo = ({ href, name, project_url, openModal, id }: CardType & { openModal: any, id: number }) => {
   return (
     <div className="p-2 md:p-5 h-full w-full absolute bottom-0 md:bottom-0 flex flex-col  justify-between  items-between lg:flex-row lg:justify-between lg:items-end">
       {/* <Link href={href} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
         <BsArrowRightCircleFill size={25} className="" />
         <p className='text-sm'>Open Popup</p>
       </Link> */}
-      <div onClick={openModal} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
+      <div onClick={() => openModal(id)} className="p-1 md:px-4 md:py-2 rounded-2xl h-min bg-white text-zinc-700 font-normal flex space-x-2 hover:text-rose-700 hover:scale-105 duration-300">
         <BsArrowRightCircleFill size={25} className="" />
         <p className='text-sm'>Open Popup</p>
       </div>

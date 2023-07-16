@@ -4,9 +4,19 @@ import { motion, AnimatePresence } from 'framer-motion'
 
 import Slider from './Slider';
 
-type Props = any
+type Props = {
+  isToggled: boolean,
+  setToggled: any,
+  closeModal: any,
+  data: null |{
+    name: string,
+    description: string,
+    tech: string[],
+    images: string[],
+  }
+}
 
-export default function Modal({ isToggled, setToggled, data }: Props) {
+export default function Modal({ isToggled, setToggled, closeModal, data }: Props) {
   return (
     <AnimatePresence>
       {isToggled &&
@@ -18,14 +28,14 @@ export default function Modal({ isToggled, setToggled, data }: Props) {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 20, opacity: 0 }}
           >
-            <p className="text-xl font-bold">{data.title}</p>
+            <p className="text-xl font-bold">{data?.name}</p>
             <ul className="italic text-center text-rose-500 text-sm"> {
-              data.techs.map((tech: string) => <li key={tech} className="inline">{tech}{" "}</li>)
+              data?.tech.map((tech: string) => <li key={tech} className="inline">{tech}{" "}</li>)
             }
             </ul>
-            <p className="text-zinc-300">{data.description}</p>
-            <Slider />
-            <button className="btn" onClick={setToggled}>Close</button>
+            <p className="text-zinc-300">{data?.description}</p>
+            <Slider images={data?.images} />
+            <button className="btn" onClick={closeModal}>Close</button>
           </motion.div>
         </>
       }
