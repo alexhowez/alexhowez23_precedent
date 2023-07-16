@@ -7,7 +7,7 @@ import { BsArrowRightCircleFill } from 'react-icons/bs';
 import Image from 'next/image';
 // import Link from 'next/link';
 
-import type {CardType} from './projects_data'
+import type { CardType } from './projects_data'
 
 // const variants = {
 //   visible: {
@@ -49,7 +49,7 @@ export default function CardComponent({ selected, setSelected, card, openModal }
       )}>
       <div className="relative h-[400px] w-full">
         <Image
-          src="/hero_bg2.jpg"
+          src={`/home/projects${card.images[0]}`}
           alt="Project Cover"
           fill
           className="object-cover group-hover:scale-110 duration-300 "
