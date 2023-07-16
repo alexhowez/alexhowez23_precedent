@@ -1,28 +1,39 @@
 "use client";
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 // import { motion, AnimatePresence } from 'framer-motion'
+import { projects } from './projects_data'
 
-import type { CardType } from './Card'
+import type { CardType } from './projects_data'
 import type { Tab } from './Filters'
 import Card from './Card'
+import Modal from './Modal'
 
-
-const initial_cards: CardType[] = [
-  { name: "Openly", href: "/", project_url: "https://github.com/Openly", tech: ["React"], platform: ['Web'] },
-  { name: "Openly2", href: "/", project_url: "https://github.com/Openly", tech: ["React"], platform: ['Web'] },
-  { name: "Openly4", href: "/", project_url: "https://github.com/Openly", tech: ["React"], platform: ['Mobile'] },
-]
-
+const initial_cards: CardType[] = projects
 
 export default function Component({ platform, tech }: { platform: Tab, tech: Tab, cards?: CardType[] }) {
   const [cards, setCards] = useState<CardType[]>([])
   const [selected, setSelected] = useState(cards[0])
+  const [modalData, setModalData] = useState<null | CardType>(null)
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const openModal = (id: number) => {
+    setModalVisible(true);
+    const card = cards.find(card => card.id === id)
+    const newModalState = card !== undefined ? card : null
+    setModalData(newModalState)
+  };
+
+  const closeModal = (id: number) => {
+    setModalVisible(false);
+    setModalData(null)
+  };
 
   useEffect(() => {
     setSelected(cards[0])
     setCards(initial_cards)
   }, [])
 
+  // filter cards with tech and platform
   useEffect(() => {
     setCards([])
 
@@ -39,15 +50,19 @@ export default function Component({ platform, tech }: { platform: Tab, tech: Tab
 
 
   return (
-    <div className=" md:col-span-7 w-full">
-      {/* <div className="grid grid-cols-5 overflow-hidden"> */}
-      <div className="p-5 grid grid-cols-12 gap-y-2 overflow-hidden bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg">
-        {/* <AnimatePresence> */}
-        {
-          cards.map((card) => <Card key={card.name} selected={selected} setSelected={setSelected} card={card} />)
-        }
-        {/* </AnimatePresence> */}
+    <>
+      <div className=" md:col-span-7 w-full">
+        <Suspense fallback="<p></p>">
+          <Modal isToggled={modalVisible} setToggled={openModal} closeModal={closeModal} data={modalData} />
+        </Suspense>
+        <div className="p-5 grid grid-cols-12 gap-y-2 overflow-hidden bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg">
+          {/* <AnimatePresence> */}
+          {
+            cards.map((card) => <Card key={card.name} selected={selected} setSelected={setSelected} card={card} openModal={openModal} />)
+          }
+          {/* </AnimatePresence> */}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

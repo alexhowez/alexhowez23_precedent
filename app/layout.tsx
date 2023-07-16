@@ -26,7 +26,8 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={cx(sfPro.variable, inter.variable)}>
+      <body> 
+      {/* <body className={cx(sfPro.variable, inter.variable)}> */}
         <Header />
         {children}
         <Footer />
