@@ -2,7 +2,7 @@
 import { ImageResponse } from "next/server";
 
 export const runtime = "edge";
-export const alt = "Precedent - Building blocks for your Next.js project";
+export const alt = "alexh Web Developer";
 export const contentType = "image/png";
 
 export default async function OG() {
@@ -13,17 +13,17 @@ export default async function OG() {
   return new ImageResponse(
     (
       <div
-        style={{
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "white",
-          backgroundImage:
-            "linear-gradient(to bottom right, #E0E7FF 25%, #ffffff 50%, #CFFAFE 75%)",
-        }}
+        // style={{
+        //   height: "100%",
+        //   width: "100%",
+        //   display: "flex",
+        //   flexDirection: "column",
+        //   alignItems: "center",
+        //   justifyContent: "center",
+        //   backgroundColor: "white",
+        //   backgroundImage:
+        //     "linear-gradient(to bottom right, #E0E7FF 25%, #ffffff 50%, #CFFAFE 75%)",
+        // }}
       >
         <img
           src={new URL("../public/logo.png", import.meta.url).toString()}
@@ -42,8 +42,22 @@ export default async function OG() {
             letterSpacing: "-0.02em",
           }}
         >
-          Precedent
+          Web & AI Bot developer
         </h1>
+        <h3
+          style={{
+            fontSize: "30px",
+            fontFamily: "SF Pro",
+            background:
+              "linear-gradient(to bottom right, #000000 21.66%, #78716c 86.47%)",
+            backgroundClip: "text",
+            color: "transparent",
+            lineHeight: "5rem",
+            letterSpacing: "-0.02em",
+          }}
+        >
+          Alex Howez
+        </h3>
       </div>
     ),
     {
