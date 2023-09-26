@@ -29,7 +29,7 @@ export default function Component() {
 
 function Header() {
   return (
-    <header className="py-1 px-2 mx-auto max-w-5xl fixed top-0 left-0 right-0 bg-transparent flex justify-between items-center transition duration-300 bg-green-30">
+    <header className="z-20 py-1 px-2 mx-auto max-w-5xl fixed top-0 left-0 right-0 bg-transparent flex justify-between items-center transition duration-300 bg-green-30">
       {/* <header className=" fixed top-0 left-0 right-0 bg-gray-300 flex justify-between items-center transition duration-300"> */}
       <div className="hidden md:block md:flex-1">
         <Logo />

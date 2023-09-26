@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 export type Tab = { label: string }
 
 const selectedStyle = "" // bg-rose-300
-const liButton = "py-3 px-6 rounded-md relative ml-0 cursor-pointer flex-shrink-0 font-semibold "
+const liButton = "py-1 px-1 lg:py-2 lg:px-4 rounded-md relative ml-0 cursor-pointer flex-shrink-0 font-semibold "
 const underlineStyle = "nset-x-0 absolute bottom-[1px] left-0 right-0 h-[2px] rounded-lg bg-red-500"
 
 interface Props {
@@ -29,7 +29,7 @@ export default function Component({ platforms, techs, setPlatform, setTech, plat
   }, [])
 
   return (
-    <article className="md:col-span-3 p-5 w-full bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg text-white space-y-4">
+    <article className="md:col-span-3 p-2 w-full bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg text-white space-y-4">
       <UpperTabs tabs={platforms} selectedTab={platform} setSelectedTab={setPlatform} />
       <LowerTabs tabs={techs} selectedTab={tech} setSelectedTab={setTech} />
     </article>

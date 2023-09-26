@@ -28,7 +28,7 @@ export default function Section() {
 
   return (
     <section className="bg-white py-4" id="projects">
-      <div className="bg-white w-full py-2 border-y-2 border-red-500" id="projects">
+      <div className="bg-white w-full py-2 border-y-0 border-red-500" id="projects">
         <Title />
         <div className="p-6 mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-10 gap-y-2 md:gap-x-3 md:gap-y-0">
           <Filters platforms={platforms} techs={techs} setPlatform={setPlatform} setTech={setTech} platform={platform} tech={tech} />

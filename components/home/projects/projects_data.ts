@@ -37,7 +37,7 @@ const projects: CardType[] = [
     title: "Music Services Marketplace with Subscription Model and Token System",
     description: "SvelteKit website that serves as a marketplace for a music producer to sell his services. Supabase used for database management and Stripe for handling subscription payments. Users can subscribe to the producer's services and earn tokens each month.\nKey Features: User Authentication with social login (Google) or regular email and password. Monthly and yearly Stripe subscription models.Token system based on Stripe’s API. Database Management.",
     date: "2022",
-    images: ["musegy.jpeg", "musegy2.jpeg", "musegy3.jpeg"]
+    images: ["/musegy.jpeg", "/musegy2.jpeg", "/musegy3.png"]
   },
   {
     id: 5,

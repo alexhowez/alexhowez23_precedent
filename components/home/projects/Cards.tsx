@@ -55,7 +55,7 @@ export default function Component({ platform, tech }: { platform: Tab, tech: Tab
         <Suspense fallback="<p></p>">
           <Modal isToggled={modalVisible} setToggled={openModal} closeModal={closeModal} data={modalData} />
         </Suspense>
-        <div className="p-5 grid grid-cols-12 gap-y-2 overflow-hidden bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg">
+        <div className="p-2 grid grid-cols-12 gap-y-2 overflow-hidden bg-zinc-600 bg-opacity-60 backdrop-blur-lg rounded-lg">
           {/* <AnimatePresence> */}
           {
             cards.map((card) => <Card key={card.name} selected={selected} setSelected={setSelected} card={card} openModal={openModal} />)
